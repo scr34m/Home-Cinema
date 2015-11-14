@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import AVKit
 
 class FirstViewController: UIViewController {
     
@@ -15,6 +16,7 @@ class FirstViewController: UIViewController {
     var subtitleUrl:String!
     var videoUrl:String!
     var cards:[(SrtCard)]!
+    var activity:UIActivityIndicatorView!
     
     func play() {
         ApiService.sharedInstance.play {JSON, NSError in
@@ -49,6 +51,10 @@ class FirstViewController: UIViewController {
         let player = AVPlayer(URL: NSURL(string: self.videoUrl)!)
         let playerLayer = AVPlayerLayer(player: player)
         
+        let playerViewContoller = AVPlayerViewController()
+        playerViewContoller.showsPlaybackControls = true
+        playerViewContoller.player = player
+
         // last showed card index in the list
         var cardsIndex = 0
         
@@ -88,7 +94,7 @@ class FirstViewController: UIViewController {
             }
         }
         
-        let frame = CGRectMake(0, 200, self.view.frame.size.width, self.view.frame.size.height - 200)
+        let frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)
         
         playerLayer.frame = frame
         self.view.layer.addSublayer(playerLayer)
@@ -97,10 +103,26 @@ class FirstViewController: UIViewController {
         self.view.layer.addSublayer(subtitleTextView.layer)
         
         player.play()
+        
+        activity.stopAnimating()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        self.tabBarController?.tabBar.hidden = true;
+        
+        let baseView = UIView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height))
+        baseView.backgroundColor = UIColor.blackColor();
+        baseView.userInteractionEnabled = true;
+        baseView.alpha = 1;
+        self.view = baseView;
+        
+        activity = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
+        activity.center = self.view.center
+        activity.hidesWhenStopped = true
+        self.view.addSubview(activity)
+        activity.startAnimating()
         
         play()
     }
