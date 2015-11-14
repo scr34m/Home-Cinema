@@ -44,7 +44,7 @@ class PlayerViewController: AVPlayerViewController, AVPlayerViewControllerDelega
                 print(NSError!.debugDescription)
             }
             else {
-                let srt = SrtParser(text: NSString(data: data, encoding:NSUTF8StringEncoding ) as String!) // NSASCIIStringEncoding
+                let srt = SrtParser(text: NSString(data: data, encoding:NSASCIIStringEncoding) as String!) // NSUTF8StringEncoding
                 self.cards = srt.getCards()
                 
                 dispatch_async(dispatch_get_main_queue()) {

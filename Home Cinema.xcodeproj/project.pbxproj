@@ -18,6 +18,8 @@
 		619DF09F1BF74E3F00515141 /* ApiResultShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619DF09E1BF74E3F00515141 /* ApiResultShow.swift */; };
 		619DF0A11BF750A400515141 /* ShowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619DF0A01BF750A400515141 /* ShowCell.swift */; };
 		619DF0A31BF75E1900515141 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619DF0A21BF75E1900515141 /* PlayerViewController.swift */; };
+		61A6FB6F1BF781EE0093EE7C /* ShowDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A6FB6E1BF781EE0093EE7C /* ShowDetailsViewController.swift */; };
+		61A6FB731BF7C12A0093EE7C /* ShowSeasonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A6FB721BF7C12A0093EE7C /* ShowSeasonCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		619DF09E1BF74E3F00515141 /* ApiResultShow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiResultShow.swift; sourceTree = "<group>"; };
 		619DF0A01BF750A400515141 /* ShowCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowCell.swift; sourceTree = "<group>"; };
 		619DF0A21BF75E1900515141 /* PlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
+		61A6FB6E1BF781EE0093EE7C /* ShowDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowDetailsViewController.swift; sourceTree = "<group>"; };
+		61A6FB721BF7C12A0093EE7C /* ShowSeasonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowSeasonCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,10 +78,12 @@
 				619DF0851BF6348500515141 /* FirstViewController.swift */,
 				619DF0871BF6348500515141 /* SecondViewController.swift */,
 				619DF0891BF6348500515141 /* Main.storyboard */,
+				61A6FB6E1BF781EE0093EE7C /* ShowDetailsViewController.swift */,
 				619DF08C1BF6348500515141 /* Assets.xcassets */,
 				619DF08E1BF6348500515141 /* Info.plist */,
 				619DF0A01BF750A400515141 /* ShowCell.swift */,
 				619DF0A21BF75E1900515141 /* PlayerViewController.swift */,
+				61A6FB721BF7C12A0093EE7C /* ShowSeasonCell.swift */,
 			);
 			path = "Home Cinema";
 			sourceTree = "<group>";
@@ -114,6 +120,7 @@
 				TargetAttributes = {
 					619DF07F1BF6348400515141 = {
 						CreatedOnToolsVersion = 7.1.1;
+						DevelopmentTeam = 5296798UBN;
 					};
 				};
 			};
@@ -153,11 +160,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				619DF0951BF645AA00515141 /* SrtParser.swift in Sources */,
+				61A6FB731BF7C12A0093EE7C /* ShowSeasonCell.swift in Sources */,
 				619DF0881BF6348500515141 /* SecondViewController.swift in Sources */,
 				619DF0A11BF750A400515141 /* ShowCell.swift in Sources */,
 				619DF09D1BF7112A00515141 /* ApiService.swift in Sources */,
 				619DF09F1BF74E3F00515141 /* ApiResultShow.swift in Sources */,
 				619DF0A31BF75E1900515141 /* PlayerViewController.swift in Sources */,
+				61A6FB6F1BF781EE0093EE7C /* ShowDetailsViewController.swift in Sources */,
 				619DF0841BF6348500515141 /* AppDelegate.swift in Sources */,
 				619DF09B1BF7105A00515141 /* SwiftyJSON.swift in Sources */,
 				619DF0861BF6348500515141 /* FirstViewController.swift in Sources */,
@@ -264,10 +273,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Home Cinema/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "hu.deeb.Home-Cinema";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -276,10 +288,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Home Cinema/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "hu.deeb.Home-Cinema";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -302,6 +317,7 @@
 				619DF0931BF6348500515141 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

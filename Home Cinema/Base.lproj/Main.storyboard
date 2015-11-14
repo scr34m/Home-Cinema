@@ -12,7 +12,7 @@
             </objects>
             <point key="canvasLocation" x="8" y="-1196"/>
         </scene>
-        <!--First-->
+        <!--TV Shows-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
                 <viewController id="9pv-A4-QxB" customClass="FirstViewController" customModule="Home_Cinema" customModuleProvider="target" sceneMemberID="viewController">
@@ -25,7 +25,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lzh-oE-JuN">
-                                <rect key="frame" x="20" y="62" width="1880" height="912"/>
+                                <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                                 <animations/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gYS-bg-W3M">
                                     <size key="itemSize" width="182" height="140"/>
@@ -35,7 +35,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ShowCell" id="TRa-N6-68Y" customClass="ShowCell" customModule="Home_Cinema" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="311" width="260" height="430"/>
+                                        <rect key="frame" x="0.0" y="140" width="260" height="430"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="260" height="430"/>
@@ -49,7 +49,7 @@
                                                     <rect key="frame" x="8" y="382" width="244" height="40"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -61,6 +61,7 @@
                                         <connections>
                                             <outlet property="showImg" destination="k1B-kD-FNv" id="1XL-Wx-pB2"/>
                                             <outlet property="showLbl" destination="UIA-cW-cZf" id="tnd-XO-meZ"/>
+                                            <segue destination="y1f-UZ-TFN" kind="show" identifier="ShowDetails" id="1LU-FO-d2A"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -69,7 +70,7 @@
                         <animations/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="TV Shows" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="collectionView" destination="lzh-oE-JuN" id="n0H-77-qpK"/>
                     </connections>
@@ -78,7 +79,99 @@
             </objects>
             <point key="canvasLocation" x="2246" y="-640"/>
         </scene>
-        <!--Second-->
+        <!--Show Details View Controller-->
+        <scene sceneID="2h5-T9-jNK">
+            <objects>
+                <viewController id="y1f-UZ-TFN" customClass="ShowDetailsViewController" customModule="Home_Cinema" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="m3M-6z-hAY"/>
+                        <viewControllerLayoutGuide type="bottom" id="ia0-Su-UdD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Hug-vr-x6S">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7af-uq-VOE">
+                                <rect key="frame" x="507" y="376" width="937" height="239"/>
+                                <animations/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <string key="text">Seven noble families fight for control of the mythical land of Westeros. Friction between the houses leads to full-scale war. All while a very ancient evil awakens in the farthest north. Amidst the war, a neglected military order of misfits, the Night's Watch, is all that stands between the realms of men and the icy horrors beyond.</string>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="posterbackground_" translatesAutoresizingMaskIntoConstraints="NO" id="bDR-zO-Zfe">
+                                <rect key="frame" x="1504" y="239" width="300" height="441"/>
+                                <animations/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Game of Thrones" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r0C-e2-ILH">
+                                <rect key="frame" x="507" y="239" width="937" height="91"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Seasons" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ctu-DG-Gdj">
+                                <rect key="frame" x="20" y="755" width="232" height="34"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="a49-4i-f9e">
+                                <rect key="frame" x="20" y="797" width="754" height="132"/>
+                                <animations/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="pfA-OU-3vI">
+                                    <size key="itemSize" width="98" height="124"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ShowSeasonCell" id="bcN-BV-rfS" customClass="ShowSeasonCell" customModule="Home_Cinema" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="6" width="100" height="120"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="120"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="posterbackground_" translatesAutoresizingMaskIntoConstraints="NO" id="1ac-TN-bMf">
+                                                    <rect key="frame" x="8" y="8" width="82" height="108"/>
+                                                    <animations/>
+                                                </imageView>
+                                            </subviews>
+                                            <animations/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <animations/>
+                                        <size key="customSize" width="100" height="120"/>
+                                        <connections>
+                                            <outlet property="featuredImage" destination="1ac-TN-bMf" id="x0v-Mj-sf7"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Season's episodes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a3m-yS-8MM">
+                                <rect key="frame" x="20" y="949" width="377" height="34"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <animations/>
+                    </view>
+                    <connections>
+                        <outlet property="bannerImage" destination="bDR-zO-Zfe" id="udo-5s-gRF"/>
+                        <outlet property="seasonsCollectionView" destination="a49-4i-f9e" id="AYG-tz-Lyf"/>
+                        <outlet property="showOverview" destination="7af-uq-VOE" id="nez-hS-GX2"/>
+                        <outlet property="showTitle" destination="r0C-e2-ILH" id="0Zh-FF-agj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OUn-OL-2Ih" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4360" y="-542"/>
+        </scene>
+        <!--Movies-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
                 <viewController id="8rJ-Kc-sve" customClass="SecondViewController" customModule="Home_Cinema" customModuleProvider="target" sceneMemberID="viewController">
@@ -115,7 +208,7 @@
                             <constraint firstAttribute="centerY" secondItem="zEq-FU-wV5" secondAttribute="centerY" id="qzY-Ky-pLD"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Movies" id="cPa-gy-q4n"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
@@ -143,7 +236,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="first" width="30" height="30"/>
-        <image name="second" width="30" height="30"/>
+        <image name="posterbackground_" width="300" height="441"/>
     </resources>
 </document>

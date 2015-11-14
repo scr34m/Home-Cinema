@@ -14,6 +14,7 @@ class FirstViewController: UIViewController, UICollectionViewDelegate, UICollect
     
     var activity:UIActivityIndicatorView!
     var shows:[(ApiResultShow)]!
+    var selectedShow:Int!
     
     func loadShows () {
         self.shows  = []
@@ -65,13 +66,13 @@ class FirstViewController: UIViewController, UICollectionViewDelegate, UICollect
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0.0, left: 50.0, bottom: 0.0, right: 50.0)
+        return UIEdgeInsets(top: 50.0, left: 50.0, bottom: 50.0, right: 50.0)
     }
-   
+
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         return CGSizeMake(260, 430)
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -80,14 +81,23 @@ class FirstViewController: UIViewController, UICollectionViewDelegate, UICollect
         
         loadShows()
     }
-    
+/*
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let playerVC = PlayerViewController()
         playerVC.playVideo()
 
         [self.presentViewController(playerVC, animated: true, completion: nil)]
     }
-
+*/
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "ShowDetails" {
+            let cell = sender as! UICollectionViewCell
+            let indexPath = self.collectionView!.indexPathForCell(cell)
+            let vc = segue.destinationViewController as! ShowDetailsViewController
+            vc.showInfo = shows[(indexPath?.row)!]
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

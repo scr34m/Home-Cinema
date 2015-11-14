@@ -70,7 +70,7 @@ switch($_SERVER["REQUEST_URI"]) {
 		break;
 	case '/play':
 		header('Content-type: application/json');
-		echo json_encode(array ('subtitle' => 'http://localhost:8000/arrow.s02e01.srt', 'video' => 'http://localhost:8000/arrow.s02e01.mp4'));
+ 		echo json_encode(array ('subtitle' => 'http://localhost:8000/arrow.s02e01.srt', 'video' => 'http://localhost:8000/arrow.s02e01.mp4'));
 		break;
 	default:
 		$file = trim($_SERVER["REQUEST_URI"], '/');

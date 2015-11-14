@@ -14,6 +14,7 @@ class ApiResultShow {
     var banner:String!
     var fanart:String!
     var poster:String!
+    var overview:String!
     
     init(fromJson json: JSON!) {
         if (json == nil) {
@@ -23,6 +24,7 @@ class ApiResultShow {
         banner = json["banner"].stringValue
         fanart = json["fanart"].stringValue
         poster = json["poster"].stringValue
+        overview = json["overview"].stringValue
     }
 }
 
