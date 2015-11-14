@@ -12,6 +12,7 @@
 		619DF0881BF6348500515141 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619DF0871BF6348500515141 /* SecondViewController.swift */; };
 		619DF08B1BF6348500515141 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 619DF0891BF6348500515141 /* Main.storyboard */; };
 		619DF08D1BF6348500515141 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 619DF08C1BF6348500515141 /* Assets.xcassets */; };
+		619DF0951BF645AA00515141 /* SrtParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619DF0941BF645AA00515141 /* SrtParser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		619DF08A1BF6348500515141 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		619DF08C1BF6348500515141 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		619DF08E1BF6348500515141 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		619DF0941BF645AA00515141 /* SrtParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SrtParser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				619DF0891BF6348500515141 /* Main.storyboard */,
 				619DF08C1BF6348500515141 /* Assets.xcassets */,
 				619DF08E1BF6348500515141 /* Info.plist */,
+				619DF0941BF645AA00515141 /* SrtParser.swift */,
 			);
 			path = "Home Cinema";
 			sourceTree = "<group>";
@@ -134,6 +137,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				619DF0951BF645AA00515141 /* SrtParser.swift in Sources */,
 				619DF0881BF6348500515141 /* SecondViewController.swift in Sources */,
 				619DF0841BF6348500515141 /* AppDelegate.swift in Sources */,
 				619DF0861BF6348500515141 /* FirstViewController.swift in Sources */,
