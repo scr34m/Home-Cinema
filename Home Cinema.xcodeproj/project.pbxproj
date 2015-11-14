@@ -15,6 +15,9 @@
 		619DF0951BF645AA00515141 /* SrtParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619DF0941BF645AA00515141 /* SrtParser.swift */; };
 		619DF09B1BF7105A00515141 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619DF09A1BF7105A00515141 /* SwiftyJSON.swift */; };
 		619DF09D1BF7112A00515141 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619DF09C1BF7112A00515141 /* ApiService.swift */; };
+		619DF09F1BF74E3F00515141 /* ApiResultShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619DF09E1BF74E3F00515141 /* ApiResultShow.swift */; };
+		619DF0A11BF750A400515141 /* ShowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619DF0A01BF750A400515141 /* ShowCell.swift */; };
+		619DF0A31BF75E1900515141 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619DF0A21BF75E1900515141 /* PlayerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		619DF0941BF645AA00515141 /* SrtParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SrtParser.swift; sourceTree = "<group>"; };
 		619DF09A1BF7105A00515141 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = ../SwiftyJSON.swift; sourceTree = "<group>"; };
 		619DF09C1BF7112A00515141 /* ApiService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
+		619DF09E1BF74E3F00515141 /* ApiResultShow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiResultShow.swift; sourceTree = "<group>"; };
+		619DF0A01BF750A400515141 /* ShowCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowCell.swift; sourceTree = "<group>"; };
+		619DF0A21BF75E1900515141 /* PlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +68,7 @@
 			children = (
 				619DF09A1BF7105A00515141 /* SwiftyJSON.swift */,
 				619DF09C1BF7112A00515141 /* ApiService.swift */,
+				619DF09E1BF74E3F00515141 /* ApiResultShow.swift */,
 				619DF0941BF645AA00515141 /* SrtParser.swift */,
 				619DF0831BF6348500515141 /* AppDelegate.swift */,
 				619DF0851BF6348500515141 /* FirstViewController.swift */,
@@ -69,6 +76,8 @@
 				619DF0891BF6348500515141 /* Main.storyboard */,
 				619DF08C1BF6348500515141 /* Assets.xcassets */,
 				619DF08E1BF6348500515141 /* Info.plist */,
+				619DF0A01BF750A400515141 /* ShowCell.swift */,
+				619DF0A21BF75E1900515141 /* PlayerViewController.swift */,
 			);
 			path = "Home Cinema";
 			sourceTree = "<group>";
@@ -145,7 +154,10 @@
 			files = (
 				619DF0951BF645AA00515141 /* SrtParser.swift in Sources */,
 				619DF0881BF6348500515141 /* SecondViewController.swift in Sources */,
+				619DF0A11BF750A400515141 /* ShowCell.swift in Sources */,
 				619DF09D1BF7112A00515141 /* ApiService.swift in Sources */,
+				619DF09F1BF74E3F00515141 /* ApiResultShow.swift in Sources */,
+				619DF0A31BF75E1900515141 /* PlayerViewController.swift in Sources */,
 				619DF0841BF6348500515141 /* AppDelegate.swift in Sources */,
 				619DF09B1BF7105A00515141 /* SwiftyJSON.swift in Sources */,
 				619DF0861BF6348500515141 /* FirstViewController.swift in Sources */,

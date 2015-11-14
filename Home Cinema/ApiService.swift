@@ -32,6 +32,12 @@ class ApiService {
         })
     }
     
+    func getShows(onCompletion: (JSON, NSError?) -> Void) {
+        getRequest(API_URL + "/shows.json", onCompletion: { json, err in
+            onCompletion(json as JSON, err as NSError?)
+        })
+    }
+    
     func rawRequest(path: String, onCompletion: (NSData, NSError?) -> Void) {
         let request = NSMutableURLRequest(URL: NSURL(string: path)!)
         

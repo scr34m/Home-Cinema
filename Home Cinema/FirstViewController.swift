@@ -7,133 +7,85 @@
 //
 
 import UIKit
-import AVFoundation
-import AVKit
 
-class FirstViewController: UIViewController {
+class FirstViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate {
+
+    @IBOutlet weak var collectionView: UICollectionView!
     
-    var subtitleTextView:UITextView!
-    var subtitleUrl:String!
-    var videoUrl:String!
-    var cards:[(SrtCard)]!
     var activity:UIActivityIndicatorView!
+    var shows:[(ApiResultShow)]!
     
-    func play() {
-        ApiService.sharedInstance.play {JSON, NSError in
+    func loadShows () {
+        self.shows  = []
+        ApiService.sharedInstance.getShows {JSON, NSError in
             if NSError != nil {
                 print(NSError!.debugDescription)
             }
             else {
-                self.subtitleUrl = JSON["subtitle"].stringValue
-                self.videoUrl = JSON["video"].stringValue
-                self.subtitle();
-            }
-        }
-    }
-    
-    func subtitle() {
-        ApiService.sharedInstance.rawRequest(self.subtitleUrl) {data, NSError in
-            if NSError != nil {
-                print(NSError!.debugDescription)
-            }
-            else {
-                let srt = SrtParser(text: NSString(data: data, encoding:NSUTF8StringEncoding ) as String!) // NSASCIIStringEncoding
-                self.cards = srt.getCards()
 
+                for json in JSON.arrayValue {
+                    let show = ApiResultShow(fromJson: json);
+                    self.shows.append(show)
+                }
                 dispatch_async(dispatch_get_main_queue()) {
-                    self.playVideo()
+                    self.collectionView.reloadData()
                 }
             }
         }
     }
     
-    func playVideo() {
-        let player = AVPlayer(URL: NSURL(string: self.videoUrl)!)
-        let playerLayer = AVPlayerLayer(player: player)
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-        let playerViewContoller = AVPlayerViewController()
-        playerViewContoller.showsPlaybackControls = true
-        playerViewContoller.player = player
-
-        // last showed card index in the list
-        var cardsIndex = 0
-        
-        // last shown card number
-        var currentCard = -1
-        
-        player.addPeriodicTimeObserverForInterval(CMTimeMake(1, 10), queue: dispatch_get_main_queue()) { (CMTime) -> Void in
-            let time = player.currentTime().value / 1000000
+        if let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ShowCell", forIndexPath: indexPath) as? ShowCell {
             
-            // create a subset of available cards
-            var cardsIndexAhead = self.cards.count - 1;
-            if cardsIndex + 10 <= self.cards.count - 1 {
-                cardsIndexAhead = cardsIndex + 10
-            }
+            let tvShow = self.shows[indexPath.row]
+            cell.configureCell(tvShow)
             
-            // loop trough the cards subset
-            for idx in cardsIndex ... cardsIndexAhead {
-                let card = self.cards[idx]
-                // hide card if it's the currently showed, but time already past
-                if (card.number == currentCard && card.stopTime <= time) {
-                    self.showSubtitle("")
-                    
-                    // invalidate current card number
-                    currentCard = -1
-                }
-                // show card if it is not currenlty showed and between the time window
-                if (card.number != currentCard && card.startTime <= time && card.stopTime >= time) {
-                    self.showSubtitle(card.text)
-                    
-                    // store the currenly showed card
-                    currentCard = card.number
-                    
-                    // store the card index for the next subset starting index
-                    cardsIndex = idx
-                    break
-                }
-            }
+            return cell
         }
-        
-        let frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)
-        
-        playerLayer.frame = frame
-        self.view.layer.addSublayer(playerLayer)
-        
-        subtitleTextView = UITextView(frame: frame)
-        self.view.layer.addSublayer(subtitleTextView.layer)
-        
-        player.play()
-        
-        activity.stopAnimating()
+        else {
+            return ShowCell()
+        }
     }
-
+    
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return shows.count
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return 50
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return 50
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0.0, left: 50.0, bottom: 0.0, right: 50.0)
+    }
+   
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        return CGSizeMake(260, 430)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.tabBarController?.tabBar.hidden = true;
         
-        let baseView = UIView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height))
-        baseView.backgroundColor = UIColor.blackColor();
-        baseView.userInteractionEnabled = true;
-        baseView.alpha = 1;
-        self.view = baseView;
+        collectionView.delegate = self
+        collectionView.dataSource = self
         
-        activity = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
-        activity.center = self.view.center
-        activity.hidesWhenStopped = true
-        self.view.addSubview(activity)
-        activity.startAnimating()
-        
-        play()
+        loadShows()
     }
     
-    func showSubtitle(msg: String) {
-        let str = NSAttributedString(string: msg, attributes: [
-            NSForegroundColorAttributeName : UIColor.blackColor(),
-            NSStrokeColorAttributeName : UIColor.whiteColor(),
-            NSStrokeWidthAttributeName : -4,
-            NSFontAttributeName : UIFont.boldSystemFontOfSize(100.0)])
-        self.subtitleTextView.attributedText = str
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let playerVC = PlayerViewController()
+        playerVC.playVideo()
+
+        [self.presentViewController(playerVC, animated: true, completion: nil)]
     }
 
     override func didReceiveMemoryWarning() {
