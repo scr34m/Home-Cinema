@@ -14,8 +14,11 @@ class ShowDetailsViewController: UIViewController, UICollectionViewDelegate, UIC
     @IBOutlet weak var showOverview: UITextView!
     @IBOutlet weak var bannerImage: UIImageView!
     @IBOutlet weak var seasonsCollectionView: UICollectionView!
-
+    @IBOutlet weak var seasonsStackView: UIStackView!
+    @IBOutlet weak var episodesLabel: UILabel!
+    
     var showInfo: ApiResultShow!
+    var seasonButtons: [(UIButton)]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,8 +45,40 @@ class ShowDetailsViewController: UIViewController, UICollectionViewDelegate, UIC
         seasonsCollectionView.dataSource = self
         
         seasonsCollectionView.reloadData()
-    }
 
+        seasonButtons = []
+        for i in 1...10 {
+            let button = UIButton(type: UIButtonType.System)
+            button.frame = CGRectMake(0, 0, 50, 50)
+            button.setTitle(String(i), forState: UIControlState.Normal)
+            button.tag = i
+            button.addTarget(self, action: "buttonAction:", forControlEvents: UIControlEvents.PrimaryActionTriggered)
+            
+            if i == 1 {
+                button.selected = true
+                button.tintColor = UIColor.blackColor()
+            }
+            
+            seasonsStackView.addArrangedSubview(button);
+            
+            seasonButtons.append(button)
+        }
+    }
+    
+    func buttonAction(sender:UIButton!)
+    {
+        // XXX track already selected button instead
+        for button in seasonButtons {
+            button.selected = false
+            button.tintColor = nil
+        }
+
+        sender.selected = true
+        sender.tintColor = UIColor.blackColor()
+
+        episodesLabel.text = "Episodes of " + String(sender.tag) + " season"
+    }
+    
     func blur() {
         let imageView = UIImageView(frame: self.view.bounds);
         imageView.image = bannerImage.image!
@@ -83,22 +118,6 @@ class ShowDetailsViewController: UIViewController, UICollectionViewDelegate, UIC
             return ShowSeasonCell()
         }
     }
-    
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
-        return 50
-    }
-    
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
-        return 50
-    }
-    
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 50.0, left: 50.0, bottom: 50.0, right: 50.0)
-    }
-    
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSizeMake(100, 120)
-    }
-    
+
 }
 
