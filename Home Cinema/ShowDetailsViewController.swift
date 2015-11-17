@@ -18,6 +18,7 @@ class ShowDetailsViewController: UIViewController, UICollectionViewDelegate, UIC
     @IBOutlet weak var episodesLabel: UILabel!
     
     var showInfo: ApiResultShow!
+    var episodes: [(ApiResultEpisode)]!
     var seasonButtons: [(UIButton)]!
     
     override func viewDidLoad() {
@@ -44,19 +45,21 @@ class ShowDetailsViewController: UIViewController, UICollectionViewDelegate, UIC
         seasonsCollectionView.delegate = self
         seasonsCollectionView.dataSource = self
         
-        seasonsCollectionView.reloadData()
-
         seasonButtons = []
-        for i in 1...10 {
+        
+        var selected = false
+        for season in showInfo.seasons {
             let button = UIButton(type: UIButtonType.System)
             button.frame = CGRectMake(0, 0, 50, 50)
-            button.setTitle(String(i), forState: UIControlState.Normal)
-            button.tag = i
+            button.setTitle(String(season), forState: UIControlState.Normal)
+            button.tag = season
             button.addTarget(self, action: "buttonAction:", forControlEvents: UIControlEvents.PrimaryActionTriggered)
             
-            if i == 1 {
+            if !selected {
                 button.selected = true
                 button.tintColor = UIColor.blackColor()
+                updateEpisodeList(season)
+                selected = true
             }
             
             seasonsStackView.addArrangedSubview(button);
@@ -76,7 +79,21 @@ class ShowDetailsViewController: UIViewController, UICollectionViewDelegate, UIC
         sender.selected = true
         sender.tintColor = UIColor.blackColor()
 
-        episodesLabel.text = "Episodes of " + String(sender.tag) + " season"
+        updateEpisodeList(sender.tag)
+    }
+    
+    func updateEpisodeList(season: Int)
+    {
+        episodes = []
+        for episode in showInfo.episodes {
+            if episode.season == season {
+                episodes.append(episode)
+            }
+        }
+        
+        episodesLabel.text = "Episodes of " + String(season) + " season"
+        
+        seasonsCollectionView.reloadData()
     }
     
     func blur() {
@@ -103,14 +120,15 @@ class ShowDetailsViewController: UIViewController, UICollectionViewDelegate, UIC
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
-        return 3
+        return episodes.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        
         if let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ShowSeasonCell", forIndexPath: indexPath) as? ShowSeasonCell {
             
-            let  imageFilename = "posterbackground_.jpg"
-            cell.featuredImage.image = UIImage(named: imageFilename)
+            let episode = self.episodes[indexPath.row]
+            cell.configureCell(episode)
             
             return cell
         }

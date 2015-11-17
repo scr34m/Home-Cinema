@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6107E7901BFBA74B0010F016 /* ApiResultEpisode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6107E78F1BFBA74A0010F016 /* ApiResultEpisode.swift */; };
 		619DF0841BF6348500515141 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619DF0831BF6348500515141 /* AppDelegate.swift */; };
 		619DF0861BF6348500515141 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619DF0851BF6348500515141 /* FirstViewController.swift */; };
 		619DF0881BF6348500515141 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619DF0871BF6348500515141 /* SecondViewController.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6107E78F1BFBA74A0010F016 /* ApiResultEpisode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiResultEpisode.swift; sourceTree = "<group>"; };
 		619DF0801BF6348500515141 /* Home Cinema.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Home Cinema.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		619DF0831BF6348500515141 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		619DF0851BF6348500515141 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 				619DF09A1BF7105A00515141 /* SwiftyJSON.swift */,
 				619DF09C1BF7112A00515141 /* ApiService.swift */,
 				619DF09E1BF74E3F00515141 /* ApiResultShow.swift */,
+				6107E78F1BFBA74A0010F016 /* ApiResultEpisode.swift */,
 				619DF0941BF645AA00515141 /* SrtParser.swift */,
 				619DF0831BF6348500515141 /* AppDelegate.swift */,
 				619DF0851BF6348500515141 /* FirstViewController.swift */,
@@ -166,6 +169,7 @@
 				619DF09D1BF7112A00515141 /* ApiService.swift in Sources */,
 				619DF09F1BF74E3F00515141 /* ApiResultShow.swift in Sources */,
 				619DF0A31BF75E1900515141 /* PlayerViewController.swift in Sources */,
+				6107E7901BFBA74B0010F016 /* ApiResultEpisode.swift in Sources */,
 				61A6FB6F1BF781EE0093EE7C /* ShowDetailsViewController.swift in Sources */,
 				619DF0841BF6348500515141 /* AppDelegate.swift in Sources */,
 				619DF09B1BF7105A00515141 /* SwiftyJSON.swift in Sources */,
